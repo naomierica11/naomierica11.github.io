@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -91,6 +92,11 @@ footer.box {
     flex-basis: 50%;
 }
 
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media screen and (max-width: 768px) {
     nav ul {
@@ -165,4 +171,3 @@ footer.box {
     }
     
 }
-

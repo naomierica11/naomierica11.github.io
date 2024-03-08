@@ -3,4 +3,6 @@
 
 mntoggle.addEventListener('click',function(){
     nav.classList.toggle('menushow');
+
+    
 })
