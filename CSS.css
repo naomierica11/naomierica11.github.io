@@ -62,3 +62,19 @@ footer {
         width: 100%; /* Make navigation items take full width on small screens */
     }
 }
+
+/* Tambahkan kelas animasi ke gambar */
+#gallery img {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Definisikan keyframe fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

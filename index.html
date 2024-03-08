@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="CSS.css">
     <title>naomierica11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 /
     <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
 
@@ -68,7 +69,7 @@
 
 <body>
     <header>
-        <h1>Website Naomi Erica</h1>
+        <h1 class="animate__animated animate__bounce">Website Naomi Erica</h1>
     </header>
 
     <nav>
@@ -159,7 +160,6 @@
     </footer>
 
     <script>
-        // JavaScript untuk menampilkan konten yang sesuai saat menu diklik
         document.querySelector('nav a[href="#home"]').addEventListener('click', function () {
             showContent('home');
         });
@@ -181,14 +181,14 @@
         });
 
         function showContent(contentId) {
-            // Semua konten disembunyikan
             document.querySelectorAll('section').forEach(function (section) {
                 section.style.display = 'none';
             });
 
-            // Konten yang sesuai dengan id ditampilkan
             document.getElementById(contentId).style.display = 'block';
         }
+
+
     </script>
 </body>
 
