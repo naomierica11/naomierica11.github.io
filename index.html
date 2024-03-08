@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>naomierica11</title>
+    <link rel="stylesheet" href="D:\web\css">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: skyblue;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h4 {
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            margin-right: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: #ffd700;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .box {
+            width: 48%;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .box h2 {
+            color: #333;
+        }
+
+        .box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .left-content,
+        .right-content {
+            flex-basis: 50%;
+        }
+
+        .interactive {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .interactive:hover {
+            transform: scale(1.1);
+        }
+        .box {
+            display: none;
+        }
+
+        .box.active {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h4>Naomi Erica</h4>
+            </div>
+            <ul>
+                <li><a href="#" data-target="tentangWebContent">Home</a></li>
+                <li><a href="#" data-target="profilDiriContent">Profil Diri</a></li>
+                <li><a href="#" data-target="motoHidupContent">Moto Hidup</a></li>
+                <li><a href="#" data-target="hobiContent">Hobi</a></li>
+                <li><a href="#" data-target="kemampuanTeknisContent">Kemampuan Teknis</a></li>
+                <li><a href="#" data-target="lessonLearnedContent">Lesson Learned</a></li>
+                <li><a href="#" data-target="harapanLulusContent">Harapan Setelah Lulus</a></li>
+                <li><a href="#" data-target="galleryVideoContent">Gallery Video</a></li>
+                <li><a href="#" data-target="mapContent">Map</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <input type="checkbox">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main>
+            <div class="box flextwo" id="tentangWebContent">
+                <article>
+                    <h2>Tentang Web</h2>
+                    <p>Web Ini dibuat untuk memenuhi tugas Proyek 1. Terima Kasih</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="profilDiriContent">
+                <article>
+                    <h2>Profil Diri</h2>
+                    <p>Nama : Naomi Erica</p>
+                    <p>TTL : Bandung, 11 Mei 2005</p>
+                    <p>Domisili : Bandung</p>
+                    <p>Politeknik Negeri Bandung</p>
+                    <p>Jurusan : Teknik Komputer dan Informatika</p>
+                    <p>Prodi : D4 - Teknik Informatika</p>
+                    <p>NIM : 231524018</p>
+                    <p>Kelas : 1A</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="motoHidupContent">
+                <article>
+                    <h2>Moto Hidup</h2>
+                    <p>Don't rush the process, good things take time!</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="hobiContent">
+                <article>
+                    <h2>Hobi</h2>
+                    <p>Hobi : bermain musik dan berolahraga</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="kemampuanTeknisContent">
+                <article>
+                    <h2>Kemampuan Teknis</h2>
+                    <p>Mampu mengoperasikan microsoft unit</p>
+                    <p>Mampu mengedit video atau foto</p>
+                    <p>mempergunakan komputer sebaik mungkin</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="lessonLearnedContent">
+                <article>
+                    <h2>Lesson Learned</h2>
+                    <p>saya mendapatkan banyak ilmu-ilmu baru setelah saya belajar disini.</p>
+                    <p>meningkatkan skill yang telah ada dan membuat skill-skill baru yang sangat berguna</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="harapanLulusContent">
+                <article>
+                    <h2>Harapan Setelah Lulus</h2>
+                    <p>Harapan saya setelah lulus adalah semoga keterampilan yang telah saya dapatkan akan berguna bagi sesama manusia</p>
+                </article>
+            </div>
+            <div class="box flextwo" id="galleryVideoContent">
+                <article>
+                    <h2>Gallery Video</h2>
+                    <iframe width="100%" height="315" src="https://youtu.be/uueeGBy25W4?si=YWH5f1EfRHRLu7NH" frameborder="0" allowfullscreen allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </article>
+            </div>            
+            
+            <div class="box flextwo interactive" id="mapContent">
+                <article>
+                    <h2>Peta</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.153515827343!2d107.57119757500693!3d-6.872202067240104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e420abc30acf%3A0x10569255865460a5!2sPoliteknik%20Negeri%20Bandung!5e0!3m2!1sid!2sid!4v1709832659976!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        width="100%"
+                        height="100"
+                        frameborder="0"
+                        style="border: 0"
+                        allowfullscreen=""
+                        aria-hidden="false"
+                        tabindex="0"
+                    ></iframe>
+                </article>
+            </div>
+            
+        </main>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="box flextwo" style="display: flex; justify-content: space-between;">
+                <div class="left-content">
+                    <!-- Left content with Jurusan Teknik Komputer -->
+                    Jurusan Teknik Komputer
+                </div>
+                <div class="right-content">
+                    <!-- Right content with Instagram logo and link -->
+                    <a href="https://www.instagram.com/naomierica_" target="_blank">
+                        <img src="C:\Users\nawweb\instagram.png" alt="Instagram Logo" class="interactive" style="width: 50px; height: 50px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle input').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+         // Fungsi untuk menangani klik pada menu
+         function showContent(targetId) {
+            // Sembunyikan semua kotak
+            var boxes = document.querySelectorAll('.box');
+            boxes.forEach(function(box) {
+                box.classList.remove('active');
+            });
+
+            // Tampilkan kotak yang sesuai dengan targetId
+            var targetBox = document.getElementById(targetId);
+            if (targetBox) {
+                targetBox.classList.add('active');
+            }
+        }
+
+        // Event listener untuk setiap menu
+        var menuItems = document.querySelectorAll('ul li a');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                var targetId = item.getAttribute('data-target');
+                showContent(targetId);
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
