@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="CSS.css">
     <title>naomierica11</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-/
+    
     <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
 
     <style>
@@ -78,36 +77,36 @@
         <a href="#hope">Harapan</a>
         <a href="#gallery">Gallery</a>
         <a href="#map">Map</a>
+        <a href="#scraped-data">Scraped Data</a> <!-- Menu baru -->
     </nav>
 
     <section id="home">
         <h2>Profil Diri</h2>                    
-                <p>Nama : Naomi Erica</p>
-                <p>TTL : Bandung, 11 Mei 2005</p>
-                <p>Domisili : Bandung</p>
-                <p>Politeknik Negeri Bandung</p>
-                <p>Jurusan : Teknik Komputer dan Informatika</p>
-                <p>Prodi : D4 - Teknik Informatika</p>
-                <p>NIM : 231524018</p>
-                <p>Kelas : 1A</p>
+        <p>Nama : Naomi Erica</p>
+        <p>TTL : Bandung, 11 Mei 2005</p>
+        <p>Domisili : Bandung</p>
+        <p>Politeknik Negeri Bandung</p>
+        <p>Jurusan : Teknik Komputer dan Informatika</p>
+        <p>Prodi : D4 - Teknik Informatika</p>
+        <p>NIM : 231524018</p>
+        <p>Kelas : 1A</p>
 
 
 
-                <h2>Moto Hidup</h2>
-                <p>Don't rush the process, good things take time!</p>
+        <h2>Moto Hidup</h2>
+        <p>Don't rush the process, good things take time!</p>
 
 
 
-                <h2>Hobi</h2>
-                <p>Hobi : bermain musik dan berolahraga</p>
+        <h2>Hobi</h2>
+        <p>Hobi : bermain musik dan berolahraga</p>
 
 
 
-                <h2>Kemampuan Teknis</h2>
-                <p>Mampu mengoperasikan microsoft unit</p>
-                <p>Mampu mengedit video atau foto</p>
-                <p>mempergunakan komputer sebaik mungkin</p>
-
+        <h2>Kemampuan Teknis</h2>
+        <p>Mampu mengoperasikan microsoft unit</p>
+        <p>Mampu mengedit video atau foto</p>
+        <p>mempergunakan komputer sebaik mungkin</p>
     </section>
 
     <section id="lesson" style="display: none;">
@@ -144,6 +143,11 @@
         ></iframe>
     </section>
 
+    <section id="scraped-data" style="display: none;"> <!-- Konten untuk hasil web scraping -->
+        <h2>Data Terkini Republika.co.id</h2>
+        <ul id="news-list"></ul>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="left-content">
@@ -159,25 +163,14 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        document.querySelector('nav a[href="#home"]').addEventListener('click', function () {
-            showContent('home');
-        });
-
-        document.querySelector('nav a[href="#lesson"]').addEventListener('click', function () {
-            showContent('lesson');
-        });
-
-        document.querySelector('nav a[href="#hope"]').addEventListener('click', function () {
-            showContent('hope');
-        });
-
-        document.querySelector('nav a[href="#gallery"]').addEventListener('click', function () {
-            showContent('gallery');
-        });
-
-        document.querySelector('nav a[href="#map"]').addEventListener('click', function () {
-            showContent('map');
+        // Fungsi untuk menampilkan konten terkait saat menu dipilih
+        document.querySelectorAll('nav a').forEach(function (menuItem) {
+            menuItem.addEventListener('click', function () {
+                var targetSectionId = this.getAttribute('href').substr(1);
+                showContent(targetSectionId);
+            });
         });
 
         function showContent(contentId) {
@@ -186,9 +179,31 @@
             });
 
             document.getElementById(contentId).style.display = 'block';
+
+            // Jika yang dipilih adalah bagian untuk menampilkan hasil scraping
+            if (contentId === 'scraped-data') {
+                // Lakukan request ke file JSON yang berisi hasil scraping
+                $.getJSON('republika_terkini.json', function(data){
+                    var newsList = $('#news-list');
+                    newsList.empty(); // Kosongkan daftar sebelum menambahkan data baru
+
+                    // Tambahkan setiap berita ke daftar
+                    $.each(data, function(index, article){
+                        if (article.hasOwnProperty('category')) {
+                            var listItem = $('<li></li>');
+                            var datetime = new Date(article.scrape_time);
+                            listItem.html(
+                                '<strong>' + article.title + '</strong><br>' +
+                                '<em>Kategori: ' + article.category + '</em><br>' +
+                                'Waktu Publish: ' + article.publish_time + '<br>' +
+                                'Waktu Scraping: ' + datetime.toLocaleString()
+                            );
+                            newsList.append(listItem);
+                        }
+                    });
+                });
+            }
         }
-
-
     </script>
 </body>
 
