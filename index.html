@@ -145,8 +145,21 @@
 
     <section id="scraped-data" style="display: none;"> <!-- Konten untuk hasil web scraping -->
         <h2>Data Terkini Republika.co.id</h2>
-        <ul id="news-list"></ul>
-    </section>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nomor</th>
+                    <th>Judul</th>
+                    <th>Kategori</th>
+                    <th>Waktu Publish</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody id="news-list">
+                <!-- Data akan dimasukkan di sini menggunakan JavaScript -->
+            </tbody>
+        </table>
+    </section>    
 
     <footer>
         <div class="footer-content">
@@ -183,7 +196,7 @@
             // Jika yang dipilih adalah bagian untuk menampilkan hasil scraping
             if (contentId === 'scraped-data') {
                 // Lakukan request ke file JSON yang berisi hasil scraping
-                $.getJSON('republika_terkini.json', function(data){
+                $.getJSON('republika_indeks.json', function(data){
                     var newsList = $('#news-list');
                     newsList.empty(); // Kosongkan daftar sebelum menambahkan data baru
 

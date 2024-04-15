@@ -78,3 +78,35 @@ footer {
         opacity: 1;
     }
 }
+
+/* CSS untuk tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd; /* Tambahkan border untuk seluruh tabel */
+  }
+  
+  /* CSS untuk header tabel */
+  thead {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* CSS untuk sel header */
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Tambahkan garis bawah untuk setiap sel */
+  }
+  
+  /* CSS untuk baris ganjil */
+  tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  /* CSS untuk baris saat dihover */
+  tbody tr:hover {
+    background-color: #ddd;
+  }
+  
