@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     newsList.innerHTML = '';
 
                     data.forEach(function (article, index) {
+                        // Check if the article object has all required properties
                         if (article.judul && article.kategori && article.waktu_publish) {
                             const listItem = document.createElement('tr');
                             listItem.innerHTML = `
@@ -21,6 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
                             newsList.appendChild(listItem);
                         }
                     });
+
+                    // Check if the last object has waktu_scraping property
+                    if (data[data.length - 1].waktu_scraping) {
+                        const lastScrapingTime = document.createElement('tr');
+                        lastScrapingTime.innerHTML = `
+                            <td>${data.length}</td>
+                            <td colspan="3">Waktu Scraping Terakhir</td>
+                            <td>${data[data.length - 1].waktu_scraping}</td>
+                        `;
+                        newsList.appendChild(lastScrapingTime);
+                    }
                 }
             })
             .catch(error => console.error('Error fetching JSON:', error));
