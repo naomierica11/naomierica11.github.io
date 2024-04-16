@@ -26,29 +26,30 @@ document.addEventListener('DOMContentLoaded', function () {
             contentToShow.style.display = 'block';
 
             if (contentId === 'scraped-data') {
-                fetch('C:/Users/Naomi Erica/myenv/republika_indeks.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const newsList = document.getElementById('news-list');
-                        if (newsList) {
-                            newsList.innerHTML = '';
+                fetch('https://raw.githubusercontent.com/naomierica11/naomierica11.github.io/main/republika_indeks.json')
+                .then(response => response.json())
+                .then(data => {
+                    const newsList = document.getElementById('news-list');
+                    if (newsList) {
+                        newsList.innerHTML = '';
 
-                            data.forEach(function (article, index) {
-                                const listItem = document.createElement('tr');
-                                const datetimePublish = new Date(article.publish_time);
-                                const datetimeScrape = new Date(article.scrape_time);
-                                listItem.innerHTML = `
-                                    <td>${index + 1}</td>
-                                    <td>${article.title}</td>
-                                    <td>${article.category}</td>
-                                    <td>${datetimePublish.toLocaleString()}</td>
-                                    <td>${datetimeScrape.toLocaleString()}</td>
-                                `;
-                                newsList.appendChild(listItem);
-                            });
-                        }
-                    })
-                    .catch(error => console.error('Error fetching JSON:', error));
+                        data.forEach(function (article, index) {
+                            const listItem = document.createElement('tr');
+                            const datetimePublish = new Date(article.publish_time);
+                            const datetimeScrape = new Date(article.scrape_time);
+                            listItem.innerHTML = `
+                                <td>${index + 1}</td>
+                                <td>${article.title}</td>
+                                <td>${article.category}</td>
+                                <td>${datetimePublish.toLocaleString()}</td>
+                                <td>${datetimeScrape.toLocaleString()}</td>
+                            `;
+                            newsList.appendChild(listItem);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching JSON:', error));
+
             }
         }
     }
