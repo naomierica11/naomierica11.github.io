@@ -9,14 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     newsList.innerHTML = '';
 
                     data.forEach(function (article, index) {
-                        const listItem = document.createElement('tr');
-                        listItem.innerHTML = `
-                            <td>${index + 1}</td>
-                            <td>${article.judul}</td>
-                            <td>${article.kategori}</td>
-                            <td>${article.waktu_publish}</td>
-                        `;
-                        newsList.appendChild(listItem);
+                        if (article.judul && article.kategori && article.waktu_publish) {
+                            const listItem = document.createElement('tr');
+                            listItem.innerHTML = `
+                                <td>${index + 1}</td>
+                                <td>${article.judul}</td>
+                                <td>${article.kategori}</td>
+                                <td>${article.waktu_publish}</td>
+                                <td>${data[data.length - 1].waktu_scraping}</td>
+                            `;
+                            newsList.appendChild(listItem);
+                        }
                     });
                 }
             })
