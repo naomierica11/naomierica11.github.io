@@ -9,30 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     newsList.innerHTML = '';
 
                     data.forEach(function (article, index) {
-                        // Check if the article object has all required properties
-                        if (article.judul && article.kategori && article.waktu_publish) {
-                            const listItem = document.createElement('tr');
-                            listItem.innerHTML = `
-                                <td>${index + 1}</td>
-                                <td>${article.judul}</td>
-                                <td>${article.kategori}</td>
-                                <td>${article.waktu_publish}</td>
-                                <td>${data[data.length - 1].waktu_scraping}</td>
-                            `;
-                            newsList.appendChild(listItem);
-                        }
-                    });
-
-                    // Check if the last object has waktu_scraping property
-                    if (data[data.length - 1].waktu_scraping) {
-                        const lastScrapingTime = document.createElement('tr');
-                        lastScrapingTime.innerHTML = `
-                            <td>${data.length}</td>
-                            <td colspan="3">Waktu Scraping Terakhir</td>
-                            <td>${data[data.length - 1].waktu_scraping}</td>
+                        const listItem = document.createElement('tr');
+                        // Pastikan menggunakan kunci yang benar
+                        listItem.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${article.judul}</td>
+                            <td>${article.kategori}</td>
+                            <td>${article.waktu_publish}</td>
+                            <td>${article.waktu_scraping || data[data.length - 1].waktu_scraping}</td>
                         `;
-                        newsList.appendChild(lastScrapingTime);
-                    }
+                        newsList.appendChild(listItem);
+                    });
                 }
             })
             .catch(error => console.error('Error fetching JSON:', error));
@@ -41,3 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Call the function to display scraped data
     showScrapedData();
 });
+
+function showPage(pageId) {
+    // Semua section disembunyikan
+    var sections = document.querySelectorAll('section');
+    sections.forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    // Tampilkan section dengan id yang sesuai
+    document.getElementById(pageId).style.display = 'block';
+}
