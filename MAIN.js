@@ -1,10 +1,3 @@
- const mntoggle = document.querySelector('.menu-toggle input');
- const nav = document.querySelector('nav ul');
-
-mntoggle.addEventListener('click',function(){
-    nav.classList.toggle('menushow');    
-})
-
 document.addEventListener('DOMContentLoaded', function () {
     const mntoggle = document.querySelector('.menu-toggle input');
     const nav = document.querySelector('nav ul');
@@ -31,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Jika yang dipilih adalah bagian untuk menampilkan hasil scraping
         if (contentId === 'scraped-data') {
-            fetch('republika_indeks.json') // Menggunakan fetch untuk mendapatkan file JSON
+            fetch('C:/Users/Naomi Erica/myenv/republika_indeks.json') // Menggunakan fetch untuk mendapatkan file JSON
                 .then(response => response.json()) // Mengubah respons menjadi JSON
                 .then(data => {
                     var newsList = document.getElementById('news-list'); // Menggunakan document.getElementById karena tidak ada jQuery
@@ -40,13 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Tambahkan setiap berita ke daftar
                     data.forEach(function (article, index) {
                         var listItem = document.createElement('tr'); // Membuat elemen <tr>
-                        var datetime = new Date(article.scrape_time);
+                        var datetimePublish = new Date(article.publish_time);
+                        var datetimeScrape = new Date(article.scrape_time);
                         listItem.innerHTML = `
                             <td>${index + 1}</td>
                             <td>${article.title}</td>
                             <td>${article.category}</td>
-                            <td>${article.publish_time}</td>
-                            <td>${datetime.toLocaleString()}</td>
+                            <td>${datetimePublish.toLocaleString()}</td>
+                            <td>${datetimeScrape.toLocaleString()}</td>
                         `;
                         newsList.appendChild(listItem); // Menambahkan elemen <tr> ke dalam <tbody>
                     });
