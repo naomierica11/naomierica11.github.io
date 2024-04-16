@@ -173,55 +173,47 @@
             </div>
         </div>
     </footer>
-
     <script>
-         function showPage(pageId) {
-        // Semua section disembunyikan
-        var sections = document.querySelectorAll('section');
-        sections.forEach(function(section) {
-            section.style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to fetch and display scraped data
+            function showScrapedData() {
+                fetch('https://raw.githubusercontent.com/naomierica11/naomierica11.github.io/main/republika_indeks.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const newsList = document.getElementById('news-list');
+                        if (newsList) {
+                            newsList.innerHTML = '';
+
+                            data.forEach(function (article, index) {
+                                const listItem = document.createElement('tr');
+                                listItem.innerHTML = `
+                                    <td>${index + 1}</td>
+                                    <td>${article.title}</td>
+                                    <td>${article.category}</td>
+                                    <td>${article.published_at}</td>
+                                    <td>${article.scraped_at}</td>
+                                `;
+                                newsList.appendChild(listItem);
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Error fetching JSON:', error));
+            }
+
+            // Call the function to display scraped data
+            showScrapedData();
         });
 
-        // Tampilkan section dengan id yang sesuai
-        document.getElementById(pageId).style.display = 'block';
-    }
-
-    fetch("C:/Users/github web/naomierica11.github.io/republika_indeks.json")
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.querySelector('#news-list');
-
-            data.forEach((item, index) => {
-                const row = document.createElement('tr');
-
-                const numberCell = document.createElement('td');
-                numberCell.textContent = index + 1;
-                row.appendChild(numberCell);
-
-                const titleCell = document.createElement('td');
-                titleCell.textContent = item.judul;
-                row.appendChild(titleCell);
-
-                const categoryCell = document.createElement('td');
-                categoryCell.textContent = item.kategori;
-                row.appendChild(categoryCell);
-
-                const publishTimeCell = document.createElement('td');
-                publishTimeCell.textContent = item.waktu_publish;
-                row.appendChild(publishTimeCell);
-
-                const imageUrlCell = document.createElement('td');
-                const imageUrlLink = document.createElement('a');
-                imageUrlLink.textContent = "View Image";
-                imageUrlLink.href = item.image_url;
-                imageUrlLink.target = "_blank";
-                imageUrlCell.appendChild(imageUrlLink);
-                row.appendChild(imageUrlCell);
-
-                tableBody.appendChild(row);
+        function showPage(pageId) {
+            // Semua section disembunyikan
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
             });
-        })
-        .catch(error => console.error('Error fetching data:', error));
+
+            // Tampilkan section dengan id yang sesuai
+            document.getElementById(pageId).style.display = 'block';
+        }
     </script>
 </body>
 
