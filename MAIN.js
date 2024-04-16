@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (newsList) {
                     newsList.innerHTML = '';
 
+                    // Flag to check if waktu_scraping has been added
+                    let waktuScrapingAdded = false;
+
                     // Loop through each article
                     data.forEach(function (article, index) {
                         const listItem = document.createElement('tr');
@@ -20,18 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
                             <td>${article.waktu_scraping ? article.waktu_scraping : ''}</td>
                         `;
                         newsList.appendChild(listItem);
-                    });
 
-                    // Add the last scraping time if available
-                    const lastScrapingTime = data[data.length - 1].waktu_scraping;
-                    if (lastScrapingTime) {
-                        const lastScrapingRow = document.createElement('tr');
-                        lastScrapingRow.innerHTML = `
-                            <td colspan="5">Waktu Scraping Terakhir</td>
-                            <td>${lastScrapingTime}</td>
-                        `;
-                        newsList.appendChild(lastScrapingRow);
-                    }
+                        // Check if we're at the last article and add waktu_scraping if not added yet
+                        if (index === data.length - 1 && !waktuScrapingAdded) {
+                            const lastScrapingTime = document.createElement('tr');
+                            lastScrapingTime.innerHTML = `
+                                <td colspan="4">Waktu Scraping Terakhir</td>
+                                <td>${article.waktu_scraping || ''}</td>
+                            `;
+                            newsList.appendChild(lastScrapingTime);
+                            waktuScrapingAdded = true;
+                        }
+                    });
                 }
             })
             .catch(error => console.error('Error fetching JSON:', error));
