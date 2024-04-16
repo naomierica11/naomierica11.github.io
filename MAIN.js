@@ -8,18 +8,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (newsList) {
                     newsList.innerHTML = '';
 
+                    // Loop through each article
                     data.forEach(function (article, index) {
                         const listItem = document.createElement('tr');
-                        // Pastikan menggunakan kunci yang benar
+                        // Populate table rows with article data
                         listItem.innerHTML = `
                             <td>${index + 1}</td>
                             <td>${article.judul}</td>
                             <td>${article.kategori}</td>
                             <td>${article.waktu_publish}</td>
-                            <td>${article.waktu_scraping || data[data.length - 1].waktu_scraping}</td>
+                            <td>${article.waktu_scraping ? article.waktu_scraping : ''}</td>
                         `;
                         newsList.appendChild(listItem);
                     });
+
+                    // Add the last scraping time if available
+                    const lastScrapingTime = data[data.length - 1].waktu_scraping;
+                    if (lastScrapingTime) {
+                        const lastScrapingRow = document.createElement('tr');
+                        lastScrapingRow.innerHTML = `
+                            <td colspan="5">Waktu Scraping Terakhir</td>
+                            <td>${lastScrapingTime}</td>
+                        `;
+                        newsList.appendChild(lastScrapingRow);
+                    }
                 }
             })
             .catch(error => console.error('Error fetching JSON:', error));
