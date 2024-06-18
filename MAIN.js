@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Function to fetch and display scraped data
     function showScrapedData() {
-        fetch('https://raw.githubusercontent.com/naomierica11/naomierica11.github.io/main/republika_indeks.json')
+        fetch('http://localhost:8000/republika_indeks.json')  // Ganti dengan path relatif jika file berada di direktori yang sama
             .then(response => response.json())
             .then(data => {
                 const newsList = document.getElementById('news-list');
