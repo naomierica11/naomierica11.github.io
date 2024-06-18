@@ -1,21 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Function to fetch and display scraped data
     function showScrapedData() {
-        fetch("D:/Polban 1/sms 2/proyek/naomierica11.github.io/republika_indeks.json")  // Ganti dengan path relatif jika file berada di direktori yang sama
+        fetch('republika_indeks.json')  // Relative path to the JSON file
             .then(response => response.json())
             .then(data => {
                 const newsList = document.getElementById('news-list');
                 if (newsList) {
                     newsList.innerHTML = '';
 
+                    const currentDateTime = new Date().toLocaleString();  // Get the current date and time
+
                     data.forEach(function (article, index) {
                         const listItem = document.createElement('tr');
                         listItem.innerHTML = `
                             <td>${index + 1}</td>
-                            <td>${article.title}</td>
-                            <td>${article.category}</td>
-                            <td>${article.published_at}</td>
-                            <td>${article.scraped_at}</td>
+                            <td>${article.judul}</td>
+                            <td>${article.kategori}</td>
+                            <td>${article.waktu_publish}</td>
+                            <td>${currentDateTime}</td>
                         `;
                         newsList.appendChild(listItem);
                     });
